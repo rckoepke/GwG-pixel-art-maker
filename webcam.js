@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Attempting to get access to webcam</title>
-</head>
-<body>
-<!-- copied from https://developers.google.com/web/fundamentals/media/capturing-images/ -->
-<video id="player" controls autoplay></video>
-<button id="capture">Capture</button>
-<canvas id="canvas" width=320 height=240></canvas>
-<script>
-  const player = document.getElementById('player');
-  const canvas = document.getElementById('canvas');
+Add these to HTML:
+// <video id="videoFeed" autoplay></video>
+// <button id="capture">Use Webcam</button>
+// <canvas id="stillImage" width=320 height=240></canvas>
+
+
+  const player = document.getElementById('videoFeed');
+  const canvas = document.getElementById('stillImage');
   const context = canvas.getContext('2d');
   const captureButton = document.getElementById('capture');
 
@@ -20,7 +14,22 @@
   };
 
   captureButton.addEventListener('click', () => {
-    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+   // context.drawImage(player, 0, 0, canvas.width, canvas.height);
+let status = $('#capture').html();
+if (status == "Use Webcam") {
+
+  $('#videoFeed').toggle(true);
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+    // Attach the video stream to the video element and autoplay.
+    player.srcObject = stream;
+});
+
+  $('#capture').html("Capture");
+}
+else{
+
+  context.drawImage(player, 0, 0, canvas.width, canvas.height);
 
   // from https://developers.google.com/web/fundamentals/media/manipulating/live-effects
   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -60,21 +69,20 @@
   var b = greenMean.toFixed(0);
   var c = blueMean.toFixed(0);
   let meanColor  = 'rgb(' + [a,b,c].join(',') + ')';
-  document.body.style.backgroundColor= meanColor;
-  alert(meanColor);
+  //document.body.style.backgroundColor= meanColor;
 
   // Stop all video streams.
-  //player.srcObject.getVideoTracks().forEach(track => track.stop());
-  });
+player.srcObject.getVideoTracks().forEach(track => track.stop());
 
+  $('#capture').html("Use Webcam");
+
+  const constraints = {
+    video: false,
+  };
   navigator.mediaDevices.getUserMedia(constraints)
     .then((stream) => {
     // Attach the video stream to the video element and autoplay.
     player.srcObject = stream;
-  });
-
-
-
-</script>
-</body>
-</html>
+});
+  $('#videoFeed').toggle(false);
+  }});
