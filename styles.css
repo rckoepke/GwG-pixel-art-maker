@@ -1,23 +1,25 @@
 body {
     text-align: center;
+    font-size: 2vmin;
 }
 
 h1 {
     font-family: Monoton;
-    font-size: 70px;
+    font-size: 6vmin;
     margin: 0.2em;
 }
 
 h2 {
     margin: 1em 0 0.25em;
+    font-size: 3vmin;
 }
 
 h2:first-of-type {
     margin-top: 0.5em;
 }
 
-input[type=number] {
-    width: 6em;
+input {
+    min-width: 5vmin;
 }
 
 .box {
@@ -29,10 +31,15 @@ input[type=number] {
     width: 5vmin;
 }
 
+.box:hover {
+    box-shadow: inset 0px 0px 5px #22a4dc;
+}
+
 .wrapper {
     display: grid;
     grid-gap: 0.4vmin;
     width: min-content;
     grid-template-columns: repeat(4, auto);
     background-color: #000;
+    margin: auto;
 }
