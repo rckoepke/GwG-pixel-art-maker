@@ -16,25 +16,23 @@ h2:first-of-type {
     margin-top: 0.5em;
 }
 
-table,
-tr,
-td {
-    border: 1px solid black;
-}
-
-table {
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-
-tr {
-    height: 20px;
-}
-
-td {
-    width: 20px;
-}
-
 input[type=number] {
     width: 6em;
+}
+
+.box {
+    background-color: #ccc;
+    border-radius: 0px;
+    min-height: 20px;
+    min-width: 20px;
+    height: 5vmin;
+    width: 5vmin;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 0.4vmin;
+    width: min-content;
+    grid-template-columns: repeat(4, auto);
+    background-color: #000;
 }
