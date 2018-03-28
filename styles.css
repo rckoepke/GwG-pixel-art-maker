@@ -1,40 +1,45 @@
 body {
     text-align: center;
+    font-size: 2vmin;
 }
 
 h1 {
     font-family: Monoton;
-    font-size: 70px;
+    font-size: 6vmin;
     margin: 0.2em;
 }
 
 h2 {
     margin: 1em 0 0.25em;
+    font-size: 3vmin;
 }
 
 h2:first-of-type {
     margin-top: 0.5em;
 }
 
-table,
-tr,
-td {
-    border: 1px solid black;
+input {
+    min-width: 5vmin;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 0 auto;
+.box {
+    background-color: #ccc;
+    border-radius: 0px;
+    min-height: 20px;
+    min-width: 20px;
+    height: 5vmin;
+    width: 5vmin;
 }
 
-tr {
-    height: 20px;
+.box:hover {
+    box-shadow: inset 0px 0px 5px #22a4dc;
 }
 
-td {
-    width: 20px;
-}
-
-input[type=number] {
-    width: 6em;
+.wrapper {
+    display: grid;
+    grid-gap: 0.4vmin;
+    width: min-content;
+    grid-template-columns: repeat(4, auto);
+    background-color: #000;
+    margin: auto;
 }
